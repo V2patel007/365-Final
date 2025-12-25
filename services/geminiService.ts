@@ -35,8 +35,15 @@ export class GeminiService {
   }
 
   private getClient() {
+    const apiKey = (process.env as any)?.API_KEY;
+    if (typeof apiKey !== 'string' || !apiKey.trim()) {
+      throw new Error(
+        'Gemini API key is missing. Set VITE_GEMINI_API_KEY (or GEMINI_API_KEY for Netlify build env) and restart the dev server.'
+      );
+    }
+
     // Correctly initialize with process.env.API_KEY directly as required by guidelines
-    return new GoogleGenAI({ apiKey: process.env.API_KEY });
+    return new GoogleGenAI({ apiKey });
   }
 
   async generateIdeas(niche: string, count: number = 6): Promise<IdeaSuggestion[]> {
