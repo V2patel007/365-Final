@@ -1,0 +1,8 @@
+
+{
+  "name": "Dev365: 2026 Content Roadmap",
+  "description": "A specialized project management and AI-powered brainstorming tool for the '365 Apps in 365 Days' challenge in 2026.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
